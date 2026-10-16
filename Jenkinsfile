@@ -7,12 +7,12 @@ pipeline {
             steps { checkout scm }
         }
         stage('Build & Test') {
-            steps { sh 'mvn clean verify' }
+            steps { bat 'mvn clean verify' }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
+                    bat 'mvn sonar:sonar'
                 }
             }
         }
